@@ -1,0 +1,46 @@
+Create DATABASE OnlineShop
+
+CREATE TABLE Cities
+(
+	CityID INT IDENTITY PRIMARY KEY,
+	[Name] VARCHAR(30)
+)
+
+CREATE TABLE Customers
+(
+	CustomerID INT IDENTITY PRIMARY KEY,
+	[Name] VARCHAR(30),
+	Birthday DATE,
+	CityID INT REFERENCES Cities(CityID)
+)
+
+CREATE TABLE Orders
+(
+	OrderID INT IDENTITY PRIMARY KEY,
+	CustomerID INT REFERENCES Customers(CustomerID)
+)
+
+CREATE TABLE ItemTypes
+(
+	ItemTypeID INT IDENTITY PRIMARY KEY,
+	[Name] VARCHAR(30)
+)
+
+CREATE TABLE Items
+(
+	ItemID INT IDENTITY PRIMARY KEY,
+	[Name] VARCHAR(30),
+	ItemTypeID INT REFERENCES ItemTypes(ItemTypeID)
+)
+
+CREATE TABLE OrderItems
+(
+	OrderID INT,
+	ItemID INT,
+	CONSTRAINT PK_OrderItems
+	PRIMARY KEY(OrderID, ItemID),
+	CONSTRAINT FK_OrderItems_Orders
+	FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
+	CONSTRAINT FK_OrderItems_Items
+	FOREIGN KEY (ItemID) REFERENCES Items(ItemID)
+)
