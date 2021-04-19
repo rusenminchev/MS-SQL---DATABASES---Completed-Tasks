@@ -2,6 +2,7 @@
 
 --02.
 SELECT * FROM Departments
+
 --03.
 SELECT [Name] FROM Departments
 
@@ -89,7 +90,6 @@ ORDER BY PeakName
 SELECT TOP(30) CountryName, [Population] FROM Countries
 WHERE ContinentCode = 'EU'
 ORDER BY [Population] DESC, CountryName
-
 
 --24.
 -- CASE is like if/else Statement in C#
