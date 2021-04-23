@@ -1,2 +1,4 @@
-SELECT FirstName, LastName FROM Employees 
+SELECT FirstName, 
+       LastName 
+FROM Employees 
 WHERE FirstName Like ('SA%')
